@@ -9,44 +9,43 @@
 
 
 const express = require ('express');
-
+const bodyParser = require( 'body-parser' );
 
 //get request for the history
 const app = express ();
 const PORT = 5002;
-
-const doTheMath = [];
-
-app.post('/math', (req, res) =>{
-let numberOne = (req.body.num1);
-let numberTwo = (req.body.num2);
-let operator = (req.body.operator);
-let total =0;
-if (operator === "+") {
-    total = numberOne + numberTwo;
-}else if(operator === "-"){
-    total = numberOne * numberTwo;
-}else if(operator === "/"){
-    total = numberOne / numberTwo;
-}
-});
 //Index html
 app.use(express.static('server/public'));
-
 //Data by AJAX
-app.use(express.urlencoded());
+//app.use(express.urlencoded());
+app.use( bodyParser.urlencoded( { extended: true } ) )
+const math = [];
 
+app.post('/math', (req, res) =>{
+math.push(req.body);
+let num1 = Number(req.body.numberOne) 
+let num2 = Number(req.body.num2) 
+let operator = req.body.operator;
+let result;
+if (operator === "+") {
+    result = num1 + num2;
+}else if(operator === "-"){
+    result = num1 - num2;
+}else if(operator === "/"){
+    result = num1 / num2;
+}else if(operator === "*"){
+    result= num1 * num2;
+}
+//let results = Number(numberOne)Number(num2);
+res.send(String( result ));
 
+//res.sendStatus(200);
 
-//POST data to the server 
-app.post("/math", (req, res) => {
-    console.log('Mathing....');
-
-    
 });
 
-
-
+app.get('/math-history',(req, res) =>{
+    res.send(math);
+})
 
 
 //Listening 
