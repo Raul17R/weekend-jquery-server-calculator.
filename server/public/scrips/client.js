@@ -18,7 +18,8 @@ function readyNow() {
 }
 
 function sendNumbers(event) {
-    event.preventDefault();
+    // event.preventDefault();
+    event.stopImmediatePropagation();
     $.ajax({
         type: 'POST',
         url: '/math',
