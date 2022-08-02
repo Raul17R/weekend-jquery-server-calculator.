@@ -26,7 +26,7 @@ math.push(req.body);
 let num1 = Number(req.body.numberOne) 
 let num2 = Number(req.body.num2) 
 let operator = req.body.operator;
-let result;
+let result = req.body.result;
 if (operator === "+") {
     result = num1 + num2;
 }else if(operator === "-"){
@@ -34,7 +34,7 @@ if (operator === "+") {
 }else if(operator === "/"){
     result = num1 / num2;
 }else if(operator === "*"){
-    result= num1 * num2;
+    result = num1 * num2;
 }
 //let results = Number(numberOne)Number(num2);
 res.send(String( result ));

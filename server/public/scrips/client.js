@@ -36,7 +36,7 @@ function getNumbers(){
         $('#history').empty();
         for(let item of response){
         $('#history').append(`
-            <li> ${item.numberOne} ${item.operator} ${item.num2}</li>
+            <li> ${item.numberOne} ${item.operator} ${item.num2} = ${item.result}</li>
         `)
         
     }
