@@ -1,26 +1,21 @@
-const { log } = require("console");
+$(document).ready(readyNow);
 
 console.log('Client sourced!');
 $(readyNow);
 
 function readyNow() {
     console.log('We are ready!');
-    $('#plus-button').on('click',sum);
+    $('#equal-button').on('click',sendNumbers);
 }
 
-function sum() {
+function sendNumbers() {
     $.ajax({
-        type: 'GET',
-        url: '/sum'
-    }).then(function (response) {
-        let numberOne = $('#number-one');
-        let numberTwo = $('#number-two');
-        let total = numberOne + numberTwo;
-        console.log(total);
-        // console.log(numberOne);
-        // console.log(numberTwo);
-
+        type: 'POST',
+        url: '/math',
+        data: {
+            num1: $('#number-one').val(),
+            num2: $('#number-two').val(),
+            operator: $('.operator').val()
+        }
     })
-    
 }
-console.log(sum());
