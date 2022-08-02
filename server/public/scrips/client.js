@@ -6,13 +6,19 @@ let selectedOperator;
 function readyNow() {
     console.log('We are ready!');
     $('#equal-button').on('click',sendNumbers);
-    $('.operator').on('click',getSelectedOperator)
+
+    $('#plus-button').on('click',getSelectedOperator)
+    $('#minus-button').on('click',getSelectedOperator)
+    $('#multiply-button').on('click',getSelectedOperator)
+    $('#devide-button').on('click',getSelectedOperator)
+    // $('.operator').on('click',getSelectedOperator)
+
     $('#clear-button').on('click',clearInput);
 
 }
 
 function sendNumbers(event) {
-    event.preventDefault;
+    event.preventDefault();
     $.ajax({
         type: 'POST',
         url: '/math',

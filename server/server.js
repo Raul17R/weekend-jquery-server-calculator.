@@ -22,11 +22,11 @@ app.use( bodyParser.urlencoded( { extended: true } ) )
 const math = [];
 
 app.post('/math', (req, res) =>{
-math.push(req.body);
+// math.push(req.body);
 let num1 = Number(req.body.numberOne) 
 let num2 = Number(req.body.num2) 
 let operator = req.body.operator;
-let result = req.body.result;
+let result;
 if (operator === "+") {
     result = num1 + num2;
 }else if(operator === "-"){
@@ -38,7 +38,8 @@ if (operator === "+") {
 }
 //let results = Number(numberOne)Number(num2);
 res.send(String( result ));
-
+let data = {result,...req.body}
+math.push(data);
 //res.sendStatus(200);
 
 });
