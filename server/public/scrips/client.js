@@ -7,6 +7,7 @@ function readyNow() {
     console.log('We are ready!');
     $('#equal-button').on('click',sendNumbers);
     $('.operator').on('click',getSelectedOperator)
+    $('#clear-button').on('click',clearInput);
 
 }
 
@@ -41,6 +42,11 @@ function getNumbers(){
     }
     
     }) 
+}
+
+function clearInput() {
+    $('#number-one').val('');
+    $('#number-two').val('');
 }
 function getSelectedOperator() {
     selectedOperator = this.textContent; //Operator Symbol + - / *
