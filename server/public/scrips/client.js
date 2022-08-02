@@ -37,7 +37,9 @@ function getNumbers(){
         $('#history').append(`
             <li> ${item.numberOne} ${item.operator} ${item.num2}</li>
         `)
+        
     }
+    
     }) 
 }
 function getSelectedOperator() {
